@@ -30,7 +30,8 @@ class ComposeListActivity : ComponentActivity() {
             ComposeItem(0, "Compose视图中嵌套View视图"),
             ComposeItem(1, "View视图中嵌套Compose视图"),
             ComposeItem(2, "Compose下拉刷新于上拉加载"),
-            ComposeItem(3, "Kotlin Compose Multiplatform")
+            ComposeItem(3, "Kotlin Compose Multiplatform"),
+            ComposeItem(4, "CMP列表测试")
         )
 
         setContent {
@@ -56,6 +57,10 @@ class ComposeListActivity : ComponentActivity() {
                                 }
                                 3 -> {
                                     val intent = Intent(context, SharedDemoActivity::class.java)
+                                    context.startActivity(intent)
+                                }
+                                4 -> {
+                                    val intent = Intent(context, CmpListActivity::class.java)
                                     context.startActivity(intent)
                                 }
                             }

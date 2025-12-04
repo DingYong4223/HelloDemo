@@ -61,6 +61,10 @@
             android:name=".compose.SharedDemoActivity"
             android:exported="false"
             android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.CmpListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
     </application>
 
 </manifest>
