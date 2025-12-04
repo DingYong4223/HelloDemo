@@ -32,7 +32,8 @@ class ComposeListActivity : ComponentActivity() {
             ComposeItem(2, "Compose下拉刷新于上拉加载"),
             ComposeItem(3, "CMP Demo Page"),
             ComposeItem(4, "CMP列表下拉刷新"),
-            ComposeItem(5, "CMP整体页面下拉刷新")
+            ComposeItem(5, "CMP整体页面下拉刷新"),
+            ComposeItem(6, "CMP展示GIF图")
         )
 
         setContent {
@@ -66,6 +67,10 @@ class ComposeListActivity : ComponentActivity() {
                                 }
                                 5 -> {
                                     val intent = Intent(context, PullRefreshScreenActivity::class.java)
+                                    context.startActivity(intent)
+                                }
+                                6 -> {
+                                    val intent = Intent(context, GifScreenActivity::class.java)
                                     context.startActivity(intent)
                                 }
                             }

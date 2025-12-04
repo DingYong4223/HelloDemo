@@ -7,10 +7,8 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
     }
 
@@ -27,11 +25,13 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation("io.coil-kt.coil3:coil-compose:3.3.0")
         }
 
         androidMain.dependencies {
             implementation(libs.androidx.appcompat)
             implementation(libs.androidx.core.ktx)
+//            implementation("io.coil-kt:coil:2.6.0")
         }
     }
 }
