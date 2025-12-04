@@ -30,8 +30,8 @@ class ComposeListActivity : ComponentActivity() {
             ComposeItem(0, "Compose视图中嵌套View视图"),
             ComposeItem(1, "View视图中嵌套Compose视图"),
             ComposeItem(2, "Compose下拉刷新于上拉加载"),
-            ComposeItem(3, "Kotlin Compose Multiplatform"),
-            ComposeItem(4, "CMP列表测试")
+            ComposeItem(3, "CMP Demo Page"),
+            ComposeItem(4, "CMP列表下拉刷新")
         )
 
         setContent {
