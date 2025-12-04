@@ -36,10 +36,6 @@ class MainActivity : ComponentActivity() {
             SimpleItem(0, "内存泄漏"),
             SimpleItem(1, "KOTLIN实验"),
             SimpleItem(2, "Compose实现"),
-            SimpleItem(3, "处理用户点击事件"),
-            SimpleItem(4, "美化应用界面"),
-            SimpleItem(5, "发布应用到市场"),
-            SimpleItem(6, "持续学习与进步")
         )
 
         setContent {
