@@ -1,6 +1,5 @@
 package com.hello.shared
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +8,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -26,6 +29,7 @@ import kotlinx.coroutines.delay
 
 data class ListItem(val id: Int, val title: String, val description: String)
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CmpListScreen() {
     val items = remember { mutableStateOf<List<ListItem>>(emptyList()) }
@@ -51,7 +55,28 @@ fun CmpListScreen() {
             }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    // 监听刷新状态
+    LaunchedEffect(isRefreshing.value) {
+        if (isRefreshing.value) {
+            delay(1000) // 模拟网络请求
+            loadFirstPage(items, currentPage)
+            isRefreshing.value = false
+        }
+    }
+
+    // 下拉刷新状态
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = isRefreshing.value,
+        onRefresh = {
+            isRefreshing.value = true
+        }
+    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .pullRefresh(pullRefreshState)
+    ) {
         if (items.value.isEmpty() && !isRefreshing.value) {
             // 空状态
             Box(
@@ -88,33 +113,15 @@ fun CmpListScreen() {
                         }
                     }
                 }
-
-                // 刷新指示器
-                if (isRefreshing.value) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
-                    }
-                }
             }
         }
 
-        // 下拉刷新按钮（简化实现）
-        if (!isRefreshing.value && items.value.isNotEmpty()) {
-            Text(
-                text = "下拉刷新",
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(16.dp)
-                    .background(Color.LightGray)
-                    .padding(8.dp),
-                style = MaterialTheme.typography.labelSmall
-            )
-        }
+        // 下拉刷新指示器
+        PullRefreshIndicator(
+            refreshing = isRefreshing.value,
+            state = pullRefreshState,
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
     }
 }
 
