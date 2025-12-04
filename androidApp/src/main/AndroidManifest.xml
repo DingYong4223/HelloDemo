@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HelloDelanding">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HelloDelanding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".memoryleak.MemoryLeakActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".memoryleak.PageLeakActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".memoryleak.NonPageLeakActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".kotlin.KotlinExperimentActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".kotlin.FlowTestActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.ComposeListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.ComposeInViewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.ViewInComposeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.PullRefreshActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+        <activity
+            android:name=".compose.SharedDemoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelloDelanding" />
+    </application>
+
+</manifest>
